@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learn-spring</groupId>
-	<artifactId>run-game</artifactId>
+	<artifactId>run-game-v1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>run-game</name>
+	<name>run-game-v1</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

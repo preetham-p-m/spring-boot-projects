@@ -1,6 +1,6 @@
-package com.learn_spring.run_game.game;
+package com.learn_spring.run_game_v1.game;
 
-public class SuperContraGame implements GameControl {
+public class MarioGame implements GameControl {
     public void up() {
         System.out.println("Jump");
     }

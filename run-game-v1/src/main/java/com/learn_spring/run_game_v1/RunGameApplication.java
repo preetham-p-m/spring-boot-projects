@@ -1,4 +1,4 @@
-package com.learn_spring.run_game;
+package com.learn_spring.run_game_v1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

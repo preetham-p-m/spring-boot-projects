@@ -1,4 +1,4 @@
-package com.learn_spring.run_game.game;
+package com.learn_spring.run_game_v1.game;
 
 public class GameRunner {
 
