@@ -1,13 +1,16 @@
 package com.learn_spring.run_game_v2.game;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.learn_spring.run_game_v2.constants.GameNameQualifier;
 
 @Component
 @Primary
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Qualifier(GameNameQualifier.MARIO)
 public class MarioGame implements GameControl {
     public void up() {

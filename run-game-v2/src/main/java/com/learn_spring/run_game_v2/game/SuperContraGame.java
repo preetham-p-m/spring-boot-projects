@@ -1,12 +1,15 @@
 package com.learn_spring.run_game_v2.game;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.learn_spring.run_game_v2.constants.GameNameQualifier;
 
 @Component
 @Qualifier(GameNameQualifier.SUPER_CONTRA)
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SuperContraGame implements GameControl {
     public void up() {
         System.out.println("SuperContra: Jump");

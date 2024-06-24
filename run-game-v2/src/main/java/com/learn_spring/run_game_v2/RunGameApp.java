@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.learn_spring.run_game_v2.game.GameRunner;
 
 @Configuration
-@ComponentScan()
+@ComponentScan
 public class RunGameApp {
 
     public static void main(String[] args) {
