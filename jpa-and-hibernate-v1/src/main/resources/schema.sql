@@ -1,0 +1,7 @@
+CREATE TABLE course
+(
+  id BIGINT PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL
+);
+
