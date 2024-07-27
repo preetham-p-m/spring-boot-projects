@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Attach",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": "5005"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TodoApplication<todo-application>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.learn_spring.todo_application.TodoApplication",
+      "projectName": "todo-application",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
