@@ -8,5 +8,6 @@
   <body>
     <div>Welcome to Todo Application</div>
     <div>Name: ${name}</div>
+    <div><a href="list-todos">Manage</a> my todos:</div>
   </body>
 </html>
