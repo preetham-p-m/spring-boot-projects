@@ -9,7 +9,7 @@
     },
     {
       "type": "java",
-      "name": "Spring Boot-TodoApplication<todo-application>",
+      "name": "Todo Application",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "mainClass": "com.learn_spring.todo_application.TodoApplication",

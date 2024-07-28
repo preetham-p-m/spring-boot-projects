@@ -6,8 +6,10 @@
     <title>Welcome Page</title>
   </head>
   <body>
-    <div>Welcome to Todo Application</div>
-    <div>Name: ${name}</div>
+    <h1>Welcome to Todo Application</h1>
+    <hr />
+    <h3>Name: ${name}</h3>
+    <hr />
     <div><a href="list-todos">Manage</a> my todos:</div>
   </body>
 </html>

@@ -7,10 +7,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.learn_spring.todo_application.model.User;
 import com.learn_spring.todo_application.service.AuthenticationService;
 
 @Controller
+@SessionAttributes("name")
 public class LoginController {
 
     private AuthenticationService authenticationService;

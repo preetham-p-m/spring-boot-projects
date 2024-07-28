@@ -14,10 +14,10 @@ public class TodoService {
     private static List<Todo> todos = new ArrayList<Todo>();
 
     static {
-        todos.add(new Todo(0, "username", "learn spring", LocalDate.now().plusMonths(6), false));
-        todos.add(new Todo(0, "username", "learn aws", LocalDate.now().plusMonths(6), false));
-        todos.add(new Todo(0, "username", "learn kubernetes", LocalDate.now().plusYears(2), false));
-        todos.add(new Todo(0, "username", "learn DSA", LocalDate.now().plusMonths(3), false));
+        todos.add(new Todo(1, "username", "learn spring", LocalDate.now().plusMonths(6), false));
+        todos.add(new Todo(2, "username", "learn aws", LocalDate.now().plusMonths(6), false));
+        todos.add(new Todo(3, "username", "learn kubernetes", LocalDate.now().plusYears(2), false));
+        todos.add(new Todo(4, "username", "learn DSA", LocalDate.now().plusMonths(3), false));
     }
 
     public List<Todo> getTodosByUser(String userName) {
