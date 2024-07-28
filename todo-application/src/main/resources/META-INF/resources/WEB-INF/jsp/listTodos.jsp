@@ -24,6 +24,7 @@
             <th>Target Date</th>
             <th>Completed</th>
             <th>Delete</th>
+            <th>Update</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,11 @@
               <td>
                 <a href="delete-todo?id=${todo.id}" class="btn btn-danger"
                   >Delete</a
+                >
+              </td>
+              <td>
+                <a href="update-todo?id=${todo.id}" class="btn btn-warning"
+                  >Update</a
                 >
               </td>
             </tr>

@@ -34,7 +34,7 @@ public class TodoController {
 
     @RequestMapping(value = "add-todo", method = RequestMethod.GET)
     public String addTodo(ModelMap map) {
-        var todo = new Todo(0, (String) map.get("name"), "", LocalDate.now().plusMonths(1), false);
+        var todo = new Todo(0, this.getUserName(map), "", LocalDate.now().plusMonths(1), false);
         map.put("todo", todo);
         return "todo";
     }
@@ -44,15 +44,40 @@ public class TodoController {
         if (bindingResult.hasErrors()) {
             return "todo";
         }
-        this.todoService.createTodo((String) map.get("name"), todo.getDescription(), LocalDate.now().plusMonths(1),
+        this.todoService.createTodo(this.getUserName(map), todo.getDescription(), LocalDate.now().plusMonths(1),
                 false);
         return "redirect:list-todos";
     }
 
     @RequestMapping(value = "delete-todo")
-    public String requestMethodName(@RequestParam int id) {
+    public String deleteTodo(@RequestParam int id) {
         this.todoService.deleteTodoById(id);
         return "redirect:list-todos";
+    }
+
+    @RequestMapping(value = "update-todo", method = RequestMethod.GET)
+    public String getUpdateTodo(@RequestParam int id, ModelMap map) {
+        var todo = this.todoService.getTodoById(id);
+        map.put("todo", todo);
+        return "todo";
+    }
+
+    @RequestMapping(value = "update-todo", method = RequestMethod.POST)
+    // The Binding result object should always be followed by the @Valid object,
+    // else Spring won't be able to properly associate the binding result with the
+    // model object, leading to errors.
+    public String postUpdateTodo(@Valid Todo todo, BindingResult bindingResult, ModelMap map) {
+        if (bindingResult.hasErrors()) {
+            return "todo";
+        }
+
+        todo.setUserName(this.getUserName(map));
+        this.todoService.updateTodo(todo);
+        return "redirect:list-todos";
+    }
+
+    private String getUserName(ModelMap map) {
+        return (String) map.get("name");
     }
 
 }
