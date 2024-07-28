@@ -23,4 +23,12 @@ public class TodoService {
     public List<Todo> getTodosByUser(String userName) {
         return todos;
     }
+
+    public void createTodo(String username, String description, LocalDate localDate, boolean done) {
+        todos.add(new Todo(todos.size() + 1, username, description, localDate, done));
+    }
+
+    public void deleteTodoById(int id) {
+        todos.removeIf(todo -> todo.getId() == id);
+    }
 }

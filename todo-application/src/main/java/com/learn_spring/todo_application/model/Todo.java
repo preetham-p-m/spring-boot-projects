@@ -2,11 +2,15 @@ package com.learn_spring.todo_application.model;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Size;
+
 public class Todo {
     private int id;
 
     private String userName;
 
+    @Size(min = 5, message = "Description must have atleast 10 characters")
+    @Size(max = 50, message = "Description must not exceed 50 characters")
     private String description;
 
     private LocalDate targetDate;
