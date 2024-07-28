@@ -5,9 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="../../webjars/bootstrap/css/bootstrap.min.css"
+      href="webjars/bootstrap/5.1.3/css/bootstrap.min.css"
       rel="stylesheet"
-      crossorigin="anonymous"
     />
 
     <title>Todos List</title>
@@ -37,7 +36,7 @@
       </tbody>
     </table>
 
-    <script href="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-    <script href="webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js" />
+    <script src="webjars/jquery/3.6.0/jquery.min.js" />
   </body>
 </html>
