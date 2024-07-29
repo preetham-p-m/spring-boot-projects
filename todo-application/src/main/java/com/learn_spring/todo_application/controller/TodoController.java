@@ -44,7 +44,7 @@ public class TodoController {
         if (bindingResult.hasErrors()) {
             return "todo";
         }
-        this.todoService.createTodo(this.getUserName(map), todo.getDescription(), LocalDate.now().plusMonths(1),
+        this.todoService.createTodo(this.getUserName(map), todo.getDescription(), todo.getTargetDate(),
                 false);
         return "redirect:list-todos";
     }
