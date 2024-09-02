@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "JpaAndHibernateApplication",
+      "request": "launch",
+      "mainClass": "com.learn_spring.jpa_and_hibernate_v1.JpaAndHibernateApplication",
+      "projectName": "jpa-and-hibernate-v1"
+    },
+    {
+      "type": "java",
       "name": "Attach",
       "request": "attach",
       "hostName": "localhost",
