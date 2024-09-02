@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "JpaAndHibernateApplication",
+      "request": "launch",
+      "mainClass": "com.learn_spring.jpa_and_hibernate_v1.JpaAndHibernateApplication",
+      "projectName": "jpa-and-hibernate-v1"
+    },
+    {
+      "type": "java",
+      "name": "Attach",
+      "request": "attach",
+      "hostName": "localhost",
+      "port": "5005"
+    },
+    {
+      "type": "java",
+      "name": "Todo Application",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.learn_spring.todo_application.TodoApplication",
+      "projectName": "todo-application",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
