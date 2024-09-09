@@ -47,12 +47,12 @@ public class SpringSecurityConfiguration {
         httpSecurity.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
         httpSecurity.formLogin(withDefaults());
 
-        // httpSecurity.csrf(csrfCustomizer -> csrfCustomizer.disable());
+        httpSecurity.csrf(csrfCustomizer -> csrfCustomizer.disable());
         // httpSecurity.headers(headersCustomizer -> headersCustomizer
         // .frameOptions(frameOptionsCustomizer -> frameOptionsCustomizer.disable()));
 
         // Disable CSRF protection (if needed)
-        httpSecurity.csrf().disable();
+        // httpSecurity.csrf().disable();
 
         // Disable frame options using the recommended method in Spring Security 6.1
         httpSecurity.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
