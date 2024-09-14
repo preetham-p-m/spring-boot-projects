@@ -33,6 +33,16 @@
       "projectName": "restful-web-service",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "aop",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.pmp.spring_aop.SpringAopApplication",
+      "projectName": "spring-aop",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }
