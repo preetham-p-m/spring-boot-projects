@@ -14,9 +14,9 @@ import com.pmp.restful_web_service.service.interfaces.PostService;
 @Service
 public class PostServiceImpl implements PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public PostServiceImpl(PostRepository postRepository, UserRepository userRepository) {
         super();

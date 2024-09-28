@@ -12,7 +12,7 @@ import com.pmp.restful_web_service.service.interfaces.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         super();
@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
     /**
      * @return List<User>
      */
+    @Override
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
