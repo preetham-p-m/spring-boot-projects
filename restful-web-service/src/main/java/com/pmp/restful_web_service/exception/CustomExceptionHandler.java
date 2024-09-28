@@ -1,9 +1,9 @@
 package com.pmp.restful_web_service.exception;
 
 import java.time.LocalDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Error> handleAllException(Exception ex, WebRequest request) throws Exception {
-        return new ResponseEntity<Error>(getError(ex, request), getErrorCode(ex));
+        return new ResponseEntity<>(getError(ex, request), getErrorCode(ex));
     }
 
     /**
@@ -40,7 +40,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public final ResponseEntity<Error> handleUserNotFoundExceptionException(Exception ex, WebRequest request)
             throws Exception {
-        return new ResponseEntity<Error>(getError(ex, request),
+        return new ResponseEntity<>(getError(ex, request),
                 HttpStatus.NOT_FOUND);
     }
 
@@ -49,7 +49,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             @NonNull MethodArgumentNotValidException ex, @NonNull HttpHeaders headers, @NonNull HttpStatusCode status,
             @NonNull WebRequest request) {
 
-        return new ResponseEntity<Object>(getValidationErrorForMethodArgumentNotValidException(ex), status);
+        return new ResponseEntity<>(getValidationErrorForMethodArgumentNotValidException(ex), status);
     }
 
     // #region Private Methods
@@ -69,13 +69,15 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     private static ValidationError getValidationErrorForMethodArgumentNotValidException(
             MethodArgumentNotValidException ex) {
 
-        List<ValidationField> list = new ArrayList<ValidationField>();
+        List<ValidationField> list = new ArrayList<>();
 
         for (ObjectError error : ex.getAllErrors()) {
 
             var fieldName = error instanceof FieldError ? ((FieldError) error).getField() : "unknown";
 
-            list.add(new ValidationField(fieldName, error.getDefaultMessage()));
+            String errorMessage = Optional.ofNullable(error).map(e -> e.getDefaultMessage()).orElse("Some Field Error");
+
+            list.add(new ValidationField(fieldName, errorMessage));
         }
 
         return getValidationErrors(list);
