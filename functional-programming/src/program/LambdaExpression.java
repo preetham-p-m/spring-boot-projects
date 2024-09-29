@@ -2,9 +2,9 @@ package program;
 
 import java.util.List;
 
-public class LamdaExpression {
+public class LambdaExpression {
     public static void main(String[] args) {
-        printSquareOfNumebrs(List.of(2, 4, 5, 12, 34, 2, 7, 5));
+        printSquareOfNumbers(List.of(2, 4, 5, 12, 34, 2, 7, 5));
     }
 
     // #region Structured
@@ -20,7 +20,7 @@ public class LamdaExpression {
     // #region Functional Method Reference
 
     public static void printAllNumbersInListFunctional(List<Integer> numbers) {
-        numbers.stream().forEach(LamdaExpression::print);
+        numbers.stream().forEach(LambdaExpression::print);
     }
 
     private static void print(int number) {
@@ -56,7 +56,7 @@ public class LamdaExpression {
         strings.stream().filter(str -> str.length() >= 4).forEach(System.out::println);
     }
 
-    public static void printSquareOfNumebrs(List<Integer> numbers) {
+    public static void printSquareOfNumbers(List<Integer> numbers) {
         numbers.stream().map(num -> num * num).forEach(System.out::println);
     }
 }
