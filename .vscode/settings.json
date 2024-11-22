@@ -2,5 +2,5 @@
   "java.compile.nullAnalysis.mode": "automatic",
   "java.dependency.packagePresentation": "hierarchical",
   "java.configuration.updateBuildConfiguration": "interactive",
-  "cSpell.words": ["springframework"]
+  "cSpell.words": ["Jdbc", "springframework", "starttls", "userdetails"]
 }
