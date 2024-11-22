@@ -2,26 +2,26 @@ package com.pmp.restful_web_service.service.interfaces;
 
 import java.util.List;
 
-import com.pmp.restful_web_service.model.User;
+import com.pmp.restful_web_service.model.AppUser;
 
-public interface UserService {
+public interface AppUserService {
 
     /**
      * @return List<User>
      */
-    List<User> getAllUsers();
+    List<AppUser> getAllUsers();
 
     /**
      * @param id
      * @return User
      */
-    User getUserById(long id);
+    AppUser getUserById(long id);
 
     /**
      * @param user
      * @return User
      */
-    User createUser(User user);
+    AppUser createUser(AppUser user);
 
     /**
      * @param id

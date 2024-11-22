@@ -32,5 +32,5 @@ public class Post {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private AppUser user;
 }

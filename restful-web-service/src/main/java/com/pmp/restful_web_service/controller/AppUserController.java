@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.pmp.restful_web_service.aop.annotation.RateLimit;
-import com.pmp.restful_web_service.model.User;
-import com.pmp.restful_web_service.service.interfaces.UserService;
+import com.pmp.restful_web_service.model.AppUser;
+import com.pmp.restful_web_service.service.interfaces.AppUserService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
-    private final UserService userService;
+public class AppUserController {
+    private final AppUserService userService;
 
-    public UserController(UserService userService) {
+    public AppUserController(AppUserService userService) {
         this.userService = userService;
     }
 
@@ -35,7 +35,7 @@ public class UserController {
      */
     @GetMapping()
     @RateLimit
-    public List<User> getAllUsers() {
+    public List<AppUser> getAllUsers() {
         return this.userService.getAllUsers();
     }
 
@@ -44,10 +44,10 @@ public class UserController {
      * @return EntityModel<User>
      */
     @GetMapping("/{id}")
-    public EntityModel<User> getUserById(@PathVariable long id) {
+    public EntityModel<AppUser> getUserById(@PathVariable long id) {
         var user = this.userService.getUserById(id);
 
-        EntityModel<User> entityModel = EntityModel.of(user);
+        EntityModel<AppUser> entityModel = EntityModel.of(user);
 
         WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllUsers());
         entityModel.add(link.withRel("all-users"));
@@ -60,7 +60,7 @@ public class UserController {
      * @return ResponseEntity<User>
      */
     @PostMapping()
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+    public ResponseEntity<AppUser> createUser(@Valid @RequestBody AppUser user) {
         var createdUser = this.userService.createUser(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")

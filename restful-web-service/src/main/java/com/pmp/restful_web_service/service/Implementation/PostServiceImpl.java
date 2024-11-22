@@ -8,7 +8,7 @@ import com.pmp.restful_web_service.exception.errors.UserNotFoundException;
 import com.pmp.restful_web_service.model.Post;
 import com.pmp.restful_web_service.model.PostRecord;
 import com.pmp.restful_web_service.repository.PostRepository;
-import com.pmp.restful_web_service.repository.UserRepository;
+import com.pmp.restful_web_service.repository.AppUserRepository;
 import com.pmp.restful_web_service.service.interfaces.PostService;
 
 @Service
@@ -16,9 +16,9 @@ public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
 
-    private final UserRepository userRepository;
+    private final AppUserRepository userRepository;
 
-    public PostServiceImpl(PostRepository postRepository, UserRepository userRepository) {
+    public PostServiceImpl(PostRepository postRepository, AppUserRepository userRepository) {
         super();
         this.postRepository = postRepository;
         this.userRepository = userRepository;
