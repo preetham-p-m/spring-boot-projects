@@ -6,8 +6,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.learn_spring.todo_application.model.Todo;
@@ -26,14 +27,14 @@ public class TodoController {
         this.todoRepository = todoRepository;
     }
 
-    @RequestMapping(value = "list-todos", method = RequestMethod.GET)
+    @GetMapping("list-todos")
     public String listTodos(ModelMap map) {
         var todos = this.todoRepository.findByUsername(getLoggedInUserName());
         map.put("todos", todos);
         return "listTodos";
     }
 
-    @RequestMapping(value = "add-todo", method = RequestMethod.GET)
+    @GetMapping("add-todo")
     public String addTodo(ModelMap map) {
         var todo = new Todo(0, this.getLoggedInUserName(), "", LocalDate.now().plusMonths(1), false);
         map.put("todo", todo);
@@ -41,7 +42,7 @@ public class TodoController {
         return "todo";
     }
 
-    @RequestMapping(value = "add-todo", method = RequestMethod.POST)
+    @PostMapping("add-todo")
     public String createNewTodo(ModelMap map, @Valid Todo todo, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "todo";
@@ -60,7 +61,7 @@ public class TodoController {
         return "redirect:list-todos";
     }
 
-    @RequestMapping(value = "update-todo", method = RequestMethod.GET)
+    @GetMapping("update-todo")
     public String getUpdateTodo(@RequestParam int id, ModelMap map) {
         var todo = this.todoRepository.findById(id).get();
 
@@ -68,7 +69,7 @@ public class TodoController {
         return "todo";
     }
 
-    @RequestMapping(value = "update-todo", method = RequestMethod.POST)
+    @PostMapping("update-todo")
     // The Binding result object should always be followed by the @Valid object,
     // else Spring won't be able to properly associate the binding result with the
     // model object, leading to errors.

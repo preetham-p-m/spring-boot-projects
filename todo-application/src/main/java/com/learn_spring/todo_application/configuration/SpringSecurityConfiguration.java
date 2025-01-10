@@ -17,12 +17,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SpringSecurityConfiguration {
 
     @Bean
-    public InMemoryUserDetailsManager createUserDetailsManager() {
+    InMemoryUserDetailsManager createUserDetailsManager() {
 
-        var userDeatil1 = createNewUser("user_1", "password");
-        var userDeatil2 = createNewUser("user_2", "password");
+        var userDetail1 = createNewUser("user_1", "password");
+        var userDetail2 = createNewUser("user_2", "password");
 
-        return new InMemoryUserDetailsManager(userDeatil1, userDeatil2);
+        return new InMemoryUserDetailsManager(userDetail1, userDetail2);
     }
 
     private UserDetails createNewUser(String userName, String password) {
@@ -38,12 +38,12 @@ public class SpringSecurityConfiguration {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
         httpSecurity.formLogin(withDefaults());
 
