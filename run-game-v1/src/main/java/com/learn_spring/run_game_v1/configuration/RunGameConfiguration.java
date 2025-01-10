@@ -11,12 +11,12 @@ import com.learn_spring.run_game_v1.game.MarioGame;
 public class RunGameConfiguration {
 
     @Bean
-    public GameControl game() {
+    GameControl game() {
         return new MarioGame();
     }
 
     @Bean
-    public GameRunner gameRunner(GameControl game) {
+    GameRunner gameRunner(GameControl game) {
         return new GameRunner(game);
     }
 }
