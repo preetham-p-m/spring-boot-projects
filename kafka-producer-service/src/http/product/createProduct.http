@@ -1,4 +1,26 @@
-POST http://localhost:8080/product
+POST http://localhost:8080/product/async
+Content-Type: application/json
+
+{
+  "title": "product1",
+  "price": 25,
+  "quantity": 10
+}
+
+###
+
+POST http://localhost:8080/product/sync-join
+Content-Type: application/json
+
+{
+  "title": "product1",
+  "price": 25,
+  "quantity": 10
+}
+
+###
+
+POST http://localhost:8080/product/sync
 Content-Type: application/json
 
 {

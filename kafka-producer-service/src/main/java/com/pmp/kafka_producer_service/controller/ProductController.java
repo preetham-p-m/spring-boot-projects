@@ -21,9 +21,21 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping()
-    public ResponseEntity<String> postMethodName(@RequestBody CreateProductRestModel entity) {
+    @PostMapping("/async")
+    public ResponseEntity<String> createProduct(@RequestBody CreateProductRestModel entity) {
         String productId = this.productService.createProduct(entity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productId);
+    }
+
+    @PostMapping("/sync-join")
+    public ResponseEntity<String> createProductSyncWithJoin(@RequestBody CreateProductRestModel entity) {
+        String productId = this.productService.createProductSyncWithJoin(entity);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productId);
+    }
+
+    @PostMapping("/sync")
+    public ResponseEntity<Object> createProductSync(@RequestBody CreateProductRestModel entity) {
+        String productId = this.productService.createProductSync(entity);
         return ResponseEntity.status(HttpStatus.CREATED).body(productId);
     }
 

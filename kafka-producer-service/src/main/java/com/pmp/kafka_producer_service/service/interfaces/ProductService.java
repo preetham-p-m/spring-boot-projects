@@ -6,4 +6,8 @@ public interface ProductService {
 
     String createProduct(CreateProductRestModel product);
 
+    String createProductSyncWithJoin(CreateProductRestModel product);
+
+    String createProductSync(CreateProductRestModel product);
+
 }
