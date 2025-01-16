@@ -1,0 +1,37 @@
+# Both files are read, but if the same property is defined in both, the one in application.properties takes
+# precedence over the one in application.yaml. This is because application.properties is loaded later in the
+# sequence, overriding the earlier application.yaml values.
+
+spring:
+  application:
+    name: kafka-producer-service
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: 1 # Default (0[No Ack], 1[Leader], any number ,all[insync replicas])
+
+      retries: 10 # Max number of reties
+      properties:
+        retry:
+          backoff:
+            ms: 1000 # Before retrying how much time to wait
+  
+        delivery:
+          timeout:
+            ms: 120000 # default 2min (1,20,000), total time from send + wait + retries
+        linger:
+          ms: 0 # helps for batch
+        request:
+          timeout:
+            ms: 30000 # For 1 request timeout
+
+server:
+  port: 8080
+
+logging:
+  level:
+    "[org.apache.kafka]": ERROR
+    "[com.pmp.kafka_producer_service.service]": ERROR
