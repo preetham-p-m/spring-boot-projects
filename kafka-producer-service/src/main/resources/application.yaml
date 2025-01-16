@@ -11,14 +11,23 @@ spring:
       bootstrap-servers: localhost:9092,localhost:9094
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      acks: 1 # Default (0[No Ack], 1[Leader], any number ,all[insync replicas])
 
-      retries: 10 # Max number of reties
+      acks: all # Default (0[No Ack], 1[Leader], any number ,all[insync replicas])
+      # retries: 10 # Max number of reties
+
       properties:
+        enable:
+          idempotence: true
+        max:
+          in:
+            flight:
+              requests:
+                per:
+                  connection: 5 # Should be less than or equal to 5 for the idempotence to work
         retry:
           backoff:
             ms: 1000 # Before retrying how much time to wait
-  
+
         delivery:
           timeout:
             ms: 120000 # default 2min (1,20,000), total time from send + wait + retries
