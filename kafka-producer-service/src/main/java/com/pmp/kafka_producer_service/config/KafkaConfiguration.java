@@ -13,7 +13,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-import com.pmp.kafka_producer_service.model.ProductCreatedEvent;
+import com.pmp.kafka_core.ProductCreatedEvent;
 
 @Configuration
 public class KafkaConfiguration {

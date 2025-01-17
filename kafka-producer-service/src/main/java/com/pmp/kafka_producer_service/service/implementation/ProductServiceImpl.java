@@ -9,9 +9,9 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
+import com.pmp.kafka_core.ProductCreatedEvent;
 import com.pmp.kafka_producer_service.error.MessageNotSendException;
 import com.pmp.kafka_producer_service.model.CreateProductRestModel;
-import com.pmp.kafka_producer_service.model.ProductCreatedEvent;
 import com.pmp.kafka_producer_service.service.interfaces.ProductService;
 
 @Service

@@ -1,4 +1,4 @@
-package com.pmp.kafka_producer_service.model;
+package com.pmp.kafka_core;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
