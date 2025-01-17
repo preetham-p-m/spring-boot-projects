@@ -9,14 +9,15 @@ import org.springframework.stereotype.Component;
 import com.pmp.kafka_core.ProductCreatedEvent;
 
 @Component
-@KafkaListener(topics = "product-created-events-topic")
+@KafkaListener(topics = "product-created-event-topic")
 public class ProductCreatedEventHandler {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @KafkaHandler
     public void handler(ProductCreatedEvent productCreatedEvent) {
-        this.logger.info("Received a new event: " + productCreatedEvent.getTitle());
+        this.logger.info(
+                "Received a new event: " + productCreatedEvent.getTitle() + " - " + productCreatedEvent.getProductId());
     }
 
 }
