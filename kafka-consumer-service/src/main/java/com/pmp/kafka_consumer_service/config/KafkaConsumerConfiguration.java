@@ -22,6 +22,11 @@ import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
+import org.springframework.util.backoff.FixedBackOff;
+import org.springframework.web.client.HttpServerErrorException;
+
+import com.pmp.kafka_consumer_service.error.NonRetryableException;
+import com.pmp.kafka_consumer_service.error.RetryableException;
 
 @Configuration
 public class KafkaConsumerConfiguration {
@@ -53,7 +58,11 @@ public class KafkaConsumerConfiguration {
 
         // Send the failed messages to a dead-letter topic and log the error, the topic
         // name will be the topicName-dlt
-        DefaultErrorHandler errorHandler = new DefaultErrorHandler(new DeadLetterPublishingRecoverer(kafkaTemplate));
+        DefaultErrorHandler errorHandler = new DefaultErrorHandler(
+                new DeadLetterPublishingRecoverer(kafkaTemplate),
+                new FixedBackOff(5000, 3)); // Backoff Strategy
+        errorHandler.addNotRetryableExceptions(NonRetryableException.class, HttpServerErrorException.class);
+        errorHandler.addRetryableExceptions(RetryableException.class);
 
         ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
