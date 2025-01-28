@@ -3,6 +3,7 @@ package com.pmp.kafka_producer_service.service.implementation;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -31,10 +32,8 @@ class ProductServiceImpl implements ProductService {
 
         // Persist before publish event
 
-        var productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(),
-                product.getQuantity());
         CompletableFuture<SendResult<String, ProductCreatedEvent>> future = kafkaTemplate
-                .send("product-created-event-topic", productId, productCreatedEvent);
+                .send(getProductCreatedEventRecord(productId, product));
 
         future.whenComplete((result, exception) -> {
             if (exception != null) {
@@ -56,10 +55,8 @@ class ProductServiceImpl implements ProductService {
 
         // Persist before publish event
 
-        var productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(),
-                product.getQuantity());
         CompletableFuture<SendResult<String, ProductCreatedEvent>> future = kafkaTemplate
-                .send("product-created-event-topic", productId, productCreatedEvent);
+                .send(getProductCreatedEventRecord(productId, product));
 
         future.whenComplete((result, exception) -> {
             if (exception != null) {
@@ -85,12 +82,10 @@ class ProductServiceImpl implements ProductService {
 
         // Persist before publish event
 
-        var productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(),
-                product.getQuantity());
-
         try {
+
             SendResult<String, ProductCreatedEvent> result = kafkaTemplate
-                    .send("product-created-event-topic", productId, productCreatedEvent).get();
+                    .send(getProductCreatedEventRecord(productId, product)).get();
             this.logger.debug(
                     "product-created-event-topic created successfully in topic {} to partition {} and offset {}",
                     result.getRecordMetadata().topic(), result.getRecordMetadata().partition(),
@@ -103,5 +98,21 @@ class ProductServiceImpl implements ProductService {
         this.logger.info("**** Product {} created successfully", productId);
 
         return productId;
+    }
+
+    private static ProducerRecord<String, ProductCreatedEvent> getProductCreatedEventRecord(String productId,
+            CreateProductRestModel product) {
+        var productCreatedEvent = new ProductCreatedEvent(productId, product.getTitle(), product.getPrice(),
+                product.getQuantity());
+
+        ProducerRecord<String, ProductCreatedEvent> record = new ProducerRecord<>("product-created-event-topic",
+                productId,
+                productCreatedEvent);
+
+        // This messageId is used in the consumer service so that the same message will
+        // not be consumed twice
+        record.headers().add("messageId", UUID.randomUUID().toString().getBytes());
+
+        return record;
     }
 }
