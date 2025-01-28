@@ -1,0 +1,12 @@
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "cSpell.words": [
+    "acks",
+    "insync",
+    "nbproject",
+    "paketobuildpacks",
+    "projectlombok",
+    "springframework"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
+}

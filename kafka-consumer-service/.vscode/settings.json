@@ -1,0 +1,11 @@
+{
+  "cSpell.words": [
+    "jdbc",
+    "paketobuildpacks",
+    "projectlombok",
+    "Retryable",
+    "springframework"
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.compile.nullAnalysis.mode": "automatic"
+}

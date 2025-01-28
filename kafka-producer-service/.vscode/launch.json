@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "KafkaProducerServiceApplication",
+      "request": "launch",
+      "mainClass": "com.pmp.kafka_producer_service.KafkaProducerServiceApplication",
+      "projectName": "kafka-producer-service"
+    }
+  ]
+}
