@@ -2,7 +2,7 @@ package com.pmp.transfer_service.ui;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pmp.transfer_service.model.TransferRestModel;
+import com.pmp.transfer_service.model.TransferEntity;
 import com.pmp.transfer_service.service.TransferService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class TransfersController {
     }
 
     @PostMapping()
-    public boolean transfer(@RequestBody TransferRestModel transferRestModel) {
+    public boolean transfer(@RequestBody TransferEntity transferRestModel) {
         return transferService.transfer(transferRestModel);
     }
 }

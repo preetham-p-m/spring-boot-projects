@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import com.pmp.kafka_core.payments.events.DepositRequestedEvent;
 import com.pmp.kafka_core.payments.events.WithdrawalRequestedEvent;
 import com.pmp.transfer_service.error.TransferServiceException;
-import com.pmp.transfer_service.model.TransferRestModel;
+import com.pmp.transfer_service.model.TransferEntity;
 
 @Service
 public class TransferServiceImpl implements TransferService {
@@ -36,7 +36,7 @@ public class TransferServiceImpl implements TransferService {
 	@Transactional(value = "kafkaTransactionManager", rollbackFor = { TransferServiceException.class,
 			ConnectException.class }, noRollbackFor = {})
 	@Override
-	public boolean transfer(TransferRestModel transferRestModel) {
+	public boolean transfer(TransferEntity transferRestModel) {
 		WithdrawalRequestedEvent withdrawalEvent = new WithdrawalRequestedEvent(transferRestModel.getSenderId(),
 				transferRestModel.getRecepientId(), transferRestModel.getAmount());
 		DepositRequestedEvent depositEvent = new DepositRequestedEvent(transferRestModel.getSenderId(),
