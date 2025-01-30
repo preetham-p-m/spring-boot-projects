@@ -86,10 +86,12 @@ class ProductServiceImpl implements ProductService {
 
             SendResult<String, ProductCreatedEvent> result = kafkaTemplate
                     .send(getProductCreatedEventRecord(productId, product)).get();
+
             this.logger.debug(
                     "product-created-event-topic created successfully in topic {} to partition {} and offset {}",
                     result.getRecordMetadata().topic(), result.getRecordMetadata().partition(),
                     result.getRecordMetadata().offset());
+
         } catch (Exception e) {
             this.logger.error(e.getMessage(), e);
             throw new MessageNotSendException(e);
