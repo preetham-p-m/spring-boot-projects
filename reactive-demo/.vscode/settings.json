@@ -1,0 +1,16 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "cSpell.words": [
+    "asyncer",
+    "dists",
+    "factorypath",
+    "gradlew",
+    "nbbuild",
+    "nbdist",
+    "nbproject",
+    "projectlombok",
+    "projectreactor",
+    "webflux"
+  ]
+}
