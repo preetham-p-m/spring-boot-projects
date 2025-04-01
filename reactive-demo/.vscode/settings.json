@@ -5,6 +5,7 @@
     "asyncer",
     "dists",
     "factorypath",
+    "flywaydb",
     "gradlew",
     "nbbuild",
     "nbdist",
@@ -12,5 +13,6 @@
     "projectlombok",
     "projectreactor",
     "webflux"
-  ]
+  ],
+  "github.copilot.editor.enableAutoCompletions": false
 }

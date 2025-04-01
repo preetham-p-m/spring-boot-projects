@@ -26,10 +26,16 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-mysql")
+
 	compileOnly("org.projectlombok:lombok")
+  annotationProcessor("org.projectlombok:lombok")
+
 	runtimeOnly("com.mysql:mysql-connector-j")
 	runtimeOnly("io.asyncer:r2dbc-mysql")
-	annotationProcessor("org.projectlombok:lombok")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
