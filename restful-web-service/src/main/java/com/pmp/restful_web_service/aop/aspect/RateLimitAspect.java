@@ -24,15 +24,15 @@ public class RateLimitAspect {
     public void beforeRequest(JoinPoint joinPoint) throws NoSuchMethodException {
         final ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
                 .currentRequestAttributes();
-        final String key = requestAttributes.getRequest().getRemoteAddr();
+
+        final String key = requestAttributes.getRequest().getRemoteAddr() + requestAttributes.getRequest()
+                .getRequestURI();
 
         final long currentTime = System.currentTimeMillis();
 
         this.requestCounts.putIfAbsent(key, new ArrayList<>());
-        this.requestCounts.get(key).add(currentTime);
 
         Method method = getMethodFromJoinPoint(joinPoint);
-
         RateLimit rateLimitAnnotation = method.getAnnotation(RateLimit.class);
         int rateLimit = rateLimitAnnotation.limit();
         long rateDuration = rateLimitAnnotation.duration();
@@ -43,6 +43,8 @@ public class RateLimitAspect {
             throw new TooManyRequestsException(
                     ("Too many requests to " + requestAttributes.getRequest().getRequestURI()).formatted());
         }
+
+        this.requestCounts.get(key).add(currentTime);
     }
 
     private void cleanUpRequestCounts(final long currentTime, final long rateDuration) {
