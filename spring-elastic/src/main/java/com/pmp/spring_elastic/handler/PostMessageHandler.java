@@ -9,13 +9,13 @@ import com.pmp.spring_elastic.mapper.PostMapper;
 import com.pmp.spring_elastic.model.MessageType;
 import com.pmp.spring_elastic.model.Post;
 import com.pmp.spring_elastic.model.PostMessage;
-import com.pmp.spring_elastic.repository.elastic.PostElasticRepository;
+import com.pmp.spring_elastic.repository.elastic.PostsElasticRepository;
 
 @Component
 public class PostMessageHandler {
 
     @Autowired
-    private PostElasticRepository postElasticRepository;
+    private PostsElasticRepository postElasticRepository;
 
     @RabbitListener(queues = "post")
     public void handlePostCreateMessage(String postJson) throws Exception {
