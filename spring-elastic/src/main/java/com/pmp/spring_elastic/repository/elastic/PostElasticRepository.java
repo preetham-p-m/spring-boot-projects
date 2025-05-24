@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.pmp.spring_elastic.model.Post;
 
 @Repository
-public interface PostsElasticRepository extends ElasticsearchRepository<Post, UUID>, SearchIndex {
+public interface PostElasticRepository extends ElasticsearchRepository<Post, UUID>, SearchIndex {
 
 }
