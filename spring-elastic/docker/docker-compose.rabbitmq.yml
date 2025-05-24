@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_3
+    ports:
+      - "5672:5672" # AMQP protocol (for apps)
+      - "15672:15672" # Web management UI
+      - "15692:15692" # Prometheus monitoring (optional, exposed in management plugin)
+    volumes:
+      - ~/.docker_data/message/rabbitmq_data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin_password
+    restart: no
