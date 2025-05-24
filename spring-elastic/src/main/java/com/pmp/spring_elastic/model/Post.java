@@ -1,7 +1,6 @@
 package com.pmp.spring_elastic.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.UuidGenerator;
@@ -33,6 +32,5 @@ public class Post implements Serializable {
     private String title;
     private String content;
     private String author;
-    private LocalDateTime createdAt;
 
 }

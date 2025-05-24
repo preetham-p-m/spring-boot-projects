@@ -15,7 +15,7 @@ public class PostMessageHandler {
     @Autowired
     private PostElasticRepository postElasticRepository;
 
-    @RabbitListener(queues = "postQueue")
+    @RabbitListener(queues = "post")
     public void handlePostCreateMessage(String post) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         Post postObj = objectMapper.readValue(post, Post.class);
