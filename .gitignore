@@ -1,3 +1,5 @@
 .DS_Store
 target/
 effective-pom.xml
+
+.idea/
