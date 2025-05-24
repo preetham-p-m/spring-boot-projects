@@ -1,4 +1,4 @@
-MySQL
+# MySQL
 
 - `elastic_rabbit` database creation
 
@@ -8,10 +8,12 @@ CREATE DATABASE elastic_rabbit;
 
 ---
 
-ElasticSearch
+# ElasticSearch
 
 - Post `index` creation
 
 ```sh
 PUT posts
 ```
+
+---
