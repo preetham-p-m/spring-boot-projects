@@ -20,7 +20,7 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    @PostMapping("path")
+    @PostMapping("/upload")
     public File upload(@RequestParam MultipartFile multipartFile) throws IllegalStateException, IOException {
         return fileService.upload(multipartFile);
     }

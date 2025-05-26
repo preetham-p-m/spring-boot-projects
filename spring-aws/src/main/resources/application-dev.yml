@@ -17,5 +17,4 @@ spring:
     open-in-view: false
 
 aws:
-  region: "us-east-01"
-  s3-bucket-name: ""
+  region: "us-east-1"
