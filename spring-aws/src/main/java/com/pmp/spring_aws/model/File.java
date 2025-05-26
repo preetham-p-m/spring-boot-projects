@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
+import org.hibernate.annotations.JdbcTypeCode;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,7 @@ public class File {
     @GeneratedValue
     @UuidGenerator
     @Column(nullable = false, updatable = false)
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
     private String fileName;
     private String bucketName;
