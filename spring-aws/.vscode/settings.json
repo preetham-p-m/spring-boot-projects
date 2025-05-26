@@ -3,6 +3,8 @@
     "awssdk",
     "factorypath",
     "gradlew",
+    "hikari",
+    "jdbc",
     "nbbuild",
     "nbdist",
     "nbproject"

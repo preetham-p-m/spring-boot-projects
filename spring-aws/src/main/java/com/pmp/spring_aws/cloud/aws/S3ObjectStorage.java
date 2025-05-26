@@ -19,8 +19,7 @@ public class S3ObjectStorage implements ObjectStorage {
         @Autowired
         private S3TransferManager s3TransferManager;
 
-        // TODO: Need to Implement
-        @Value("{}")
+        @Value("${aws.s3-bucket-name}")
         private String bucketName;
 
         @Override
