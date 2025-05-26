@@ -3,7 +3,9 @@ package com.pmp.spring_elastic.model;
 import java.io.Serializable;
 import java.util.UUID;
 
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.type.SqlTypes;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import jakarta.persistence.Column;
@@ -28,6 +30,7 @@ public class Post implements Serializable {
     @GeneratedValue
     @UuidGenerator
     @Column(updatable = false, nullable = false)
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
     private String title;
     private String content;
