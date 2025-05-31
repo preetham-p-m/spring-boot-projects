@@ -26,15 +26,24 @@
 		<tag/>
 		<url/>
 	</scm>
+
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/preetham-p-m/spring-boot-projects</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
-	<dependencies>
 
+
+	<dependencies>
 		<dependency>
 			<groupId>com.pmp</groupId>
 			<artifactId>kafka-core</artifactId>
-			<version>0.0.21-SNAPSHOT</version>
+			<version>0.0.3</version>
 		</dependency>
 
 		<dependency>
