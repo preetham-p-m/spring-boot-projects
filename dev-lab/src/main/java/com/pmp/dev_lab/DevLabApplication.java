@@ -1,5 +1,6 @@
 package com.pmp.dev_lab;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.pmp.dev_lab.rest.rest_template.RestTemplateMain;
@@ -8,8 +9,8 @@ import com.pmp.dev_lab.rest.rest_template.RestTemplateMain;
 public class DevLabApplication {
 
 	public static void main(String[] args) {
-		// SpringApplication.run(DevLabApplication.class, args);
-		executeBean(args);
+		SpringApplication.run(DevLabApplication.class, args);
+		// executeBean(args);
 	}
 
 	public static void executeBean(String[] args) {
