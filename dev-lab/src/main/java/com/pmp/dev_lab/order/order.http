@@ -1,0 +1,28 @@
+### GET By Id
+GET http://localhost:8080/api/Orders/1/query
+Accept: application/json
+
+
+### GET By Id Query
+GET http://localhost:8080/api/Orders/1/query
+Accept: application/json
+
+
+### Create
+POST http://localhost:8080/api/Orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "customerName": "98765",
+  "items": [
+    {
+      "itemCode": "p001",
+      "quantity": 2
+    },
+    {
+      "itemCode": "p002",
+      "quantity": 1
+    }
+  ]
+}
