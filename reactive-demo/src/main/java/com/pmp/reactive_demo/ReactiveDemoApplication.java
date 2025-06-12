@@ -17,7 +17,7 @@ public class ReactiveDemoApplication {
 
 	@Bean
 	CommandLineRunner commandLineRunner(StudentService studentService) {
-		return _ -> {
+		return (x) -> {
 			for (int i = 0; i < 100; i++) {
 				studentService.save(
 						Student

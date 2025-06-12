@@ -1,11 +1,11 @@
 spring:
   r2dbc:
     url: r2dbc:mysql://localhost:3306/spring_reactive
-    username: root
-    password: password
+    username: user
+    password: user_password
 
   flyway:
     url: jdbc:mysql://localhost:3306/spring_reactive
-    user: root
-    password: password
+    user: user
+    password: user_password
     enabled: true
